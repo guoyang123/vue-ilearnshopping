@@ -1,15 +1,19 @@
 <template>
  <div>
-   <input v-model="inputvalue"/>
+   <input class="item" v-model="inputvalue"/>
    <button @click="handleClick">提交</button>
    <ul>
-     <li>1</li>
-     <li>2</li>
+    <!-- <li v-for="(item,index) of list" :key="index">{{item}}</li>-->
+    <todo-item :content="item" :index="index"
+               v-for="(item,index) of list"
+               :key="index"
+                @delete="handleDelete"></todo-item>
    </ul>
  </div>
 </template>
 
 <script>
+  import TodoItem from './components/TodoItem'
 export default {
  data:function(){
    return {
@@ -17,10 +21,16 @@ export default {
      list:[]
    }
  },
+  components:{
+   'todo-item':TodoItem
+  },
   methods:{
     handleClick(){
      this.list.push(this.inputvalue)
       this.inputvalue=""
+    },
+    handleDelete(index){
+      this.list.splice(index)
     }
   }
 }
