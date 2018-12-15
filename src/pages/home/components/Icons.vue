@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-      <swiper>
+      <swiper :options="swiperOption">
         <swiper-slide v-for="(page,index1) of pages" :key="index1">
          <div class="icon" v-for="(item,index) of page" :key="index">
            <div class="icon-img">
@@ -19,6 +19,11 @@
         name: "HomeIcons",
         data(){
           return {
+            swiperOption:{
+              pagination:'.swiper-pagination',
+              loop:true,
+              autoplay:false
+            },
             iconList:[
               {id:'001',imgUrl:'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',desc:'景点门票'},
               {id:'002',imgUrl:'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',desc:'滑雪季'},

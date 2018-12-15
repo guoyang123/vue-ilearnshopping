@@ -4,8 +4,8 @@
 
   <swiper :options="swiperOption" >
     <!-- slides -->
-    <swiper-slide v-for="(item,index) of swiperList" :key="index ">
-      <img class="swiper-img" :src="item.imgUrl"/>
+    <swiper-slide v-for="(item,index) of banners" :key="index " v-if="index<4" data-swiper-autoplay="3000">
+      <img class="swiper-img" :src="item.imageHost+item.mainImage"/>
     </swiper-slide>
     <div class="swiper-pagination"  slot="pagination"></div>
   </swiper>
@@ -15,24 +15,16 @@
 <script>
     export default {
         name: "HomeSwiper",
+        props:{
+          banners:Array
+        },
         data (){
           return {
             swiperOption:{
               pagination:'.swiper-pagination',
-              loop:true
-            },
-            swiperList:[{
-              id:'001',
-              imgUrl:'http://piwbqm1dn.bkt.clouddn.com/topbanner.png'
-            },{
-              id:'002',
-              imgUrl:'http://piwbqm1dn.bkt.clouddn.com/combanner.png'
-            },{
-              id:'003',
-              imgUrl:'http://piwbqm1dn.bkt.clouddn.com/topbanner.png'
+              loop:true,
+              autoplay: true
             }
-
-            ]
           }
         }
     }

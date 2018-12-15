@@ -2,14 +2,14 @@
   <div>
     <div class="recommend-title">新品推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="(item,index) of recommendList" :key="index">
+      <li class="item border-bottom" v-for="(item,index) of newList" :key="index" v-if="index<6">
         <div class="item-img-wrapper">
-          <img class="item-img" :src="item.imgUrl"/>
+          <img class="item-img" :src="item.imageHost+item.mainImage"/>
         </div>
 
         <div class="item-info">
-          <p class="item-title">{{item.title}} </p>
-          <p class="item-desc">{{item.desc}}</p>
+          <p class="item-title">{{item.name}} </p>
+          <p class="item-desc">{{item.subtitle}}</p>
 
         </div>
       </li>
@@ -20,6 +20,9 @@
 <script>
   export default {
     name: "NewProduct",
+    props:{
+      newList:Array
+    },
     data(){
       return {
         recommendList:[
