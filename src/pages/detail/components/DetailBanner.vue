@@ -3,20 +3,24 @@
     <div class="banner" @click="handleClickBanner">
       <img class="banner-img" :src="detailheader.imageHost+detailheader.mainImage" >
       <div class="banner-info">
-        <p class="banner-title">{{detailheader.name}}</p>
+        <p class="banner-title"></p><!--{{detailheader.name}}-->
         <p class="banner-number"><span class="iconfont icon-text">&#xe61a;</span>{{gallaryBanners.length}}</p>
       </div>
     </div>
+    <fade-animation>
     <common-gallary :galleryObj="detailheader" v-show="showGallary" @close="closeGallary"></common-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
    import  CommonGallary from 'common/gallary/Gallary'
+   import FadeAnimation from 'common/fade/FadeAnimation'
     export default {
         name: "DetailBanner",
         components:{
-          CommonGallary
+          CommonGallary,
+          FadeAnimation
         },
       props:{
         detailheader:Object
@@ -67,6 +71,7 @@
        font-size :.32rem
        padding: .2rem
      .banner-number
+       margin-right :.1rem
        height :.2rem
        line-height :.2rem
        margin-top: .14rem
