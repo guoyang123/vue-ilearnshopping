@@ -1,6 +1,5 @@
 <template>
     <div>
-
       <detail-banner :detailheader="detail"></detail-banner>
       <detail-header></detail-header>
       <detail-info :detailinfo="detail"></detail-info>
@@ -55,5 +54,12 @@
 </script>
 
 <style scoped lang="stylus">
+
+   .v-enter
+     width: -100%
+   .v-enter-to
+     width :0%
+   .v-enter-active
+     transition: 2s width
 
 </style>
