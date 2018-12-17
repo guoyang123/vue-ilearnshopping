@@ -55,11 +55,6 @@
 
 <style scoped lang="stylus">
 
-   .v-enter
-     width: -100%
-   .v-enter-to
-     width :0%
-   .v-enter-active
-     transition: 2s width
+
 
 </style>
