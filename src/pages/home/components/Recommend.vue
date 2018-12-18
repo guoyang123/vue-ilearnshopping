@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div >
+    <div >
     <div class="recommend-title">热销推荐</div>
     <ul>
       <router-link
@@ -17,20 +18,17 @@
          </div>
       </router-link>
     </ul>
+    </div>
   </div>
 </template>
 
 <script>
+
     export default {
         name: "HomeRecommend",
         props:{
           hots:Array
-        },
-      data(){
-          return {
-
-          }
-      }
+        }
     }
 </script>
 

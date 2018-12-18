@@ -3,7 +3,7 @@
     <div class="header-abs" v-show="!showHeader">
       <router-link tag="div" to="/" class="iconfont header-abs-back">&#xe624;</router-link>
     </div>
-    <div class="header-fixed" v-show="showHeader">
+    <div class="header-fixed" v-show="showHeader" :style="opacityStyle">
       <router-link tag="div" to="/" class="iconfont header-abs-back">&#xe624;</router-link>
       商品详细
     </div>
@@ -16,14 +16,22 @@
         name: "DetailHeader",
         data(){
           return {
-            showHeader:false
+            showHeader:false,
+            opacityStyle:{
+              opacity:0
+            }
           }
         },
       methods:{
           handleScroll(){
            const top= document.documentElement.scrollTop
-
+             // 60-140之间渐隐渐显
             if(top>60){
+              let opacity=top/140;
+              opacity=opacity>1?1:opacity
+              this.opacityStyle={
+                opacity
+              }
               this.showHeader=true
             }else{
               this.showHeader=false
