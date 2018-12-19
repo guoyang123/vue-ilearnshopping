@@ -1,7 +1,7 @@
 <template>
     <div>
        <city-header></city-header>
-      <city-search></city-search>
+      <city-search :categoryId="this.$route.params.id"></city-search>
     </div>
 </template>
 
@@ -10,6 +10,11 @@
   import  CitySearch from './components/CitySearch'
     export default {
         name: "City",
+      data(){
+      return {
+
+      }
+      },
         components:{
           CityHeader,
           CitySearch

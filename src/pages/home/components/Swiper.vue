@@ -4,8 +4,8 @@
 
   <swiper :options="swiperOption" >
     <!-- slides -->
-    <swiper-slide v-for="(item,index) of banners" :key="index " v-if="index<4" data-swiper-autoplay="3000">
-      <img class="swiper-img" :src="item.imageHost+item.mainImage"/>
+    <swiper-slide  v-for="(item,index) of banners" :key="index " v-if="index<4" data-swiper-autoplay="2000">
+      <router-link tag='img' :to="'/detail/'+item.id" class="swiper-img" :src="item.imageHost+item.mainImage"/>
     </swiper-slide>
     <div class="swiper-pagination"  slot="pagination"></div>
   </swiper>
@@ -23,7 +23,7 @@
             swiperOption:{
               pagination:'.swiper-pagination',
               loop:true,
-              autoplay: true
+              autoplay: 1000
             }
           }
         }
@@ -42,4 +42,5 @@
     background :#eee
     .swiper-img
       width :100%
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div >
     <div >
-    <div class="recommend-title">热销推荐</div>
+    <div v-show="isshowtitle" class="recommend-title">热销推荐</div>
     <ul>
       <router-link
         tag="li"
@@ -26,8 +26,10 @@
 
     export default {
         name: "HomeRecommend",
+
         props:{
-          hots:Array
+          hots:Array,
+          isshowtitle:Boolean
         }
     }
 </script>

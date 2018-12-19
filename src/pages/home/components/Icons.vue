@@ -1,13 +1,16 @@
 <template>
     <div class="icons">
-      <swiper :options="swiperOption">
+      <swiper :options="swiperOptions">
         <swiper-slide v-for="(page,index1) of pages" :key="index1">
-         <div class="icon" v-for="(item,index) of page" :key="index">
+         <router-link tag="div"
+                      class="icon" v-for="(item,index) of page"
+                      :key="index"
+                      :to="'/city/'+item.id">
            <div class="icon-img">
-             <img class="icon-img-content" :src="item.imgUrl"/>
+             <img class="icon-img-content" src="http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png"/>
            </div>
-           <p class="icon-desc">{{item.desc}}</p>
-         </div>
+           <p class="icon-desc">{{item.name}}</p>
+         </router-link>
         </swiper-slide>
       </swiper>
 
@@ -17,11 +20,13 @@
 <script>
     export default {
         name: "HomeIcons",
+        props:{
+          rootCategorys:Array
+        },
         data(){
           return {
-            swiperOption:{
+            swiperOptions:{
               pagination:'.swiper-pagination',
-              loop:true,
               autoplay:false
             },
             iconList:[
@@ -40,7 +45,7 @@
       computed:{
           pages(){
             const pages=[]
-            this.iconList.forEach((item,index)=>{
+            this.rootCategorys.forEach((item,index)=>{
               //该元素在第几页
               const page=Math.floor(index/8)
               if(!pages[page]){

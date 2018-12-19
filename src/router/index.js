@@ -20,7 +20,7 @@ export default new Router({
       component: List
     },
     {
-      path: '/city',
+      path: '/city/:id',
       name: 'city',
       component: City
     },

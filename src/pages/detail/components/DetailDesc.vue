@@ -21,6 +21,9 @@
        .wrapper .ELazy-loading{
          width:100%
        }
+       .wrapper table{
+         width: 100%;
+       }
 
 
 </style>

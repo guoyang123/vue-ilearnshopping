@@ -1,9 +1,13 @@
 <template>
     <div class="header">
-      <div class="header-left"><div class="iconfont icon-back">&#xe624;</div></div>
-      <div class="header-input"><span class="iconfont">&#xe632;</span><span class="warn">输入城市/游玩/主题</span></div>
+      <div class="header-left">
+        <div class="iconfont icon-back">&#xe624;</div>
+      </div>
+      <router-link to="/city/-1" class="link">
+      <div class="header-input"><span class="iconfont">&#xe632;</span><span class="warn">输入要搜索的商品</span></div>
+      </router-link>
       <router-link to="/city">
-       <div class="header-right"><span class="city">城市</span><span class="iconfont arrow-icon">&#xe64a;</span></div>
+       <!--<div class="header-right"><span class="city">城市</span><span class="iconfont arrow-icon">&#xe64a;</span></div>-->
       </router-link>
     </div>
 </template>
@@ -16,7 +20,12 @@
 
 <style scoped lang="stylus">
 @import '~styles/varibles.styl'
-  .header
+  .header >>> .link
+    display :block
+    width:100%
+    margin-right:.4rem
+
+.header
     display: flex
     height : .86rem
     background:$bgColor
@@ -37,11 +46,14 @@
       border-radius: .1rem
       margin-top :.12rem
       margin-left :.1rem
+      margin-right:.1rem
       padding-left: .2rem
       height :.64rem
+      width:100%
       line-height:.64rem
       color :#ccc
     .header-right
+      display:none
       width:1.24rem
       float :right
       text-aligin:center

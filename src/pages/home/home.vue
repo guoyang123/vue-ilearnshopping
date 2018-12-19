@@ -2,8 +2,8 @@
   <div>
     <home-header></home-header>
     <home-swiper :banners="bannerList"></home-swiper>
-    <home-icons></home-icons>
-    <home-recommend :hots="hotList"></home-recommend>
+    <home-icons :rootCategorys="rootCategoryList"></home-icons>
+    <home-recommend :hots="hotList" :isshowtitle="true"></home-recommend>
     <new-product :newList="newList"></new-product>
    <!-- <div class="home">home</div>
    <router-link to="/list">列表页</router-link>-->
@@ -27,13 +27,15 @@
           return {
             bannerList:[],
             hotList:[],
-            newList:[]
+            newList:[],
+            rootCategoryList:[]
           }
       },
       mounted() {
         this.getBannerInfo(),
         this.getHotInfo(),
-        this.getNewInfo()
+        this.getNewInfo(),
+          this.getRootCategoryInfo()
 
       },
       methods:{
@@ -50,6 +52,10 @@
           //
           axios.get("http://www.imbession.top/portal/product/detail.do?categoryId=1&is_banner=1")
             .then(this.getNewInfoSucc)
+        },
+        getRootCategoryInfo(){
+            axios.get(" http://www.imbession.top/manage/category/get_category.do?categoryId=0")
+              .then(this.getRootCategoryInfoSucc)
         },
         getBannerInfooSucc(res){
             //接口返回的数据
@@ -78,7 +84,16 @@
             this.newList=data
             console.log(this.newList)
           }
+        },
+        getRootCategoryInfoSucc(res){
+        //接口返回的数据
+        res=res.data
+        if(res.status==0 && res.data){
+          const data=res.data
+          this.rootCategoryList=data
+          console.log(this.rootCategoryList)
         }
+  },
       }
     }
 </script>
